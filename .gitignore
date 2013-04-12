@@ -1,0 +1,6 @@
+# Ignore mac & system files
+.DS_Store
+[Tt]humbs.db
+
+# Ignore stuff marked for ignoring
+__*

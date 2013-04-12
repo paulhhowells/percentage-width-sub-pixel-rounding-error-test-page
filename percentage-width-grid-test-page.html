@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Percentage Test</title>
+	<style type="text/css" media="screen">
+		/*
+			tested in
+			Opera 12.15
+			Safari 5.1.8
+			Firefox 19
+		*/
+		
+		/*	BASE CSS */
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #ccc;
+			font-size: 100%;
+			}
+		h1,
+		h2 {
+			padding: 10px 10px 10px 30px;
+			margin: 0;
+			color: #fff;
+			}
+		h2 {
+			padding-bottom: 5px;
+			font-family: sans-serif;
+			font-size: 1em;
+			}
+		.wrapper {
+			margin: 0 auto 0 auto;
+			background-color: #d22;
+			}
+		
+		/*	UNIT GRID SYSTEM CSS */
+		.units {
+			_height: 1px; /* IE6 */
+			min-height: 1px;
+			zoom: 1;
+			}
+		.units:after {
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+			}
+		.u-row {
+			_height: 1px; /* IE6 */
+			min-height: 1px;
+			margin-bottom: 5px;
+			}
+		.u-row:after {
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+			}
+
+		.unit {
+			float: left;
+			_height: 1px; /* IE6 */
+			min-height: 1px;
+			zoom: 1;
+			}
+		.unit:after {
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+			}
+		.unit:last-child {
+			background-color: #333;
+			padding-bottom: 2px;
+
+			width: auto;
+			overflow: hidden;
+			float: none;
+			zoom: 1;
+			}
+		.unit:last-child:after {
+			content: "";
+			display: none;
+		}
+
+		
+		.u-1-16 {width:  6.25%;}
+		.u-2-16 {width: 12.5%;}
+		.u-3-16 {width: 18.75%;}
+		.u-4-16 {width: 25%;}
+		.u-5-16 {width: 31.25%;}
+		.u-6-16 {width: 37.5%;}
+		.u-7-16 {width: 43.75%;}
+		.u-8-16 {width: 50%;}
+		.u-9-16 {width: 56.25%;}
+		.u-10-16 {width: 62.5%;}
+		.u-11-16 {width: 68.75%;}
+		.u-12-16 {width: 75%;}
+		.u-13-16 {width: 81.25%;}
+		.u-14-16 {width: 87.5%;}
+		.u-15-16 {width: 93.75%;}
+		.u-16-16 {width: 100%;}
+
+		.u-1-12 {width:  8.333333333333333%;}
+		.u-2-12 {width: 16.666666666666666%;}
+		.u-3-12 {width: 25%;}
+		.u-4-12 {width: 33.333333333333333%;}
+		.u-5-12 {width: 41.666666666666666%;}
+		.u-6-12 {width: 50%;}
+		.u-7-12 {width: 58.333333333333333%;}
+		.u-8-12 {width: 66.666666666666666%;}
+		.u-9-12 {width: 75%;}
+		.u-10-12 {width: 83.333333333333333%;}
+		.u-11-12 {width: 91.666666666666666%;}
+		.u-12-12 {width: 100%;}
+
+		.u-1-6	{width: 16.666666666666666%;}
+		.u-2-6	{width: 33.333333333333333%;}
+		.u-3-6	{width: 50%;}
+		.u-4-6	{width: 66.666666666666666%;}
+		.u-5-6	{width: 83.333333333333333%;}
+
+		.u-1-5	{width: 20%;}
+		.u-2-5	{width: 40%;}
+		.u-3-5	{width: 60%;}
+		.u-4-5	{width: 80%;}
+		.u-1-4	{width: 25%;}
+		.u-2-4	{width: 50%;}
+		.u-3-4	{width: 75%;}
+		.u-1-3	{width: 33.333333333333333%;}
+		.u-2-3	{width: 66.666666666666666%;}
+		.u-1-2	{width: 50%;}
+		.u-1-1	{width: 100%;}
+
+		.u-module {
+			padding: 0 5px 0 5px;
+			background-color: rgba(255, 255, 255, 0.95);
+			zoom: 1; /* ie clearfix */
+			}
+		.u-module:after {
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+			}
+
+		.module {
+			overflow: hidden;
+			padding: 1px;
+			border-left: 1px solid rgba(0, 0, 0, 0.5);
+			border-right: 1px solid rgba(0, 0, 0, 0.5);
+			background-color: #fff;
+			font-family: sans-serif;
+			font-size: 6.25%;
+			word-break: break-word;
+			word-wrap: break-word;
+			}
+	</style>
+	
+	<!--[if lte IE 7]>
+		<style type="text/css" media="screen">
+			/*
+				I have iteratively derived two sets of percentages.
+				The first from a page width of 960px and larger, and
+				the second set of amendments from a page width of 500px and larger.
+			*/
+
+			/* above 960 */
+			.u-1-16 {width: 6.1999999999999999%;		/* 6.199999999 6.2 6.25 */ }
+			.u-2-16 {width: 12.399999999999999%;}
+			.u-3-16 {width: 18.739999999999999%;}
+			.u-4-16 {width: 24.9%;}
+			.u-5-16 {width: 31.239999999999999%;}
+			.u-6-16 {width: 37.399999999999999%;}
+			.u-7-16 {width: 43.749999999999999%;}
+
+			.u-1-12 {width: 8.2799999999999999%;		/* 8.28 8.289999999999999 8.29 8.299999999 8.3 8.31 8.333333333333333 */}
+			.u-2-12 {width: 16.6%;}
+			.u-3-12 {width: 24.9%;}
+			.u-4-12 {width: 33.3%;}
+			.u-6-12	{width: 49.999999999999999%;}
+
+			.u-1-6	{width: 16.6%;									/* 16.666666666666667 */ }
+			.u-2-6	{width: 33.3%;}
+			.u-3-6	{width: 49.999999999999999%;}
+
+			.u-1-5	{width: 19.959999999999999%;		/* 19.96 19.97 20*/}
+
+			.u-1-4	{width: 24.9%; 									/* 24.99 24.999999999 */}
+			.u-2-4	{width: 49.999999999999999%;}
+
+			.u-1-3	{width: 33.3%;									/* 33.33 33.333333333333333 */}
+
+			.u-1-2	{width: 49.999999999999999%;		/* 50 */}
+			.u-1-1	{width: 100%;}
+
+
+			/* above 500 */
+			.u-1-16 {width: 6.1199999999999999%;		/* 6.199999999 */}
+			.u-4-16 {width: 24.9%;}
+			.u-3-16 {width: 18.719999999999999%;}		/* 521 745 */
+			.u-13-16 {width: 81.249999999999999%;}
+			.u-1-12 {width: 8.2199999999999999%;		/* 8.27 8.2799999999999999 */}
+			.u-1-6	{width: 16.4999999999999999%;		/* 16.6 */}
+			.u-1-5	{width: 19.8899999999999999%;		/* 19.959999999999999 */}
+			.u-1-3,
+			.u-2-6,
+			.u-4-12	{width: 33.1999999999999999%;		/* 33.3 */}
+
+			.u-module {background-color: #999;}
+		</style>
+	<![endif]-->
+	
+	<!--[if lte IE 6]>
+		<style type="text/css" media="screen">
+			.u-1-16 {width: 6.0999999999999999%;} /* 687 */
+			.u-1-12 {width: 8.249999999999999%;}	/* 491 */
+			.u-1-6	{width: 16.599999999999999%;} /* 491 */
+			.u-1-5	{width: 19.939999999999999%;}
+			.u-1-3	{width: 33.199999999999999%;}
+		</style>
+	<![endif]-->
+</head>
+<body>
+	<div class="wrapper">
+		<h1>Percentage Rendering Test</h1>
+		<div class="units">
+			<div class="u-row">
+				<h2>sixteenths</h2>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-2-16"><div class="u-module"><div class="module">2-16</div></div></div>
+				<div class="unit u-2-16"><div class="u-module"><div class="module">2-16</div></div></div>
+				<div class="unit u-2-16"><div class="u-module"><div class="module">2-16</div></div></div>
+				<div class="unit u-2-16"><div class="u-module"><div class="module">2-16</div></div></div>
+				<div class="unit u-2-16"><div class="u-module"><div class="module">2-16</div></div></div>
+				<div class="unit u-2-16"><div class="u-module"><div class="module">2-16</div></div></div>
+				<div class="unit u-2-16"><div class="u-module"><div class="module">2-16</div></div></div>
+				<div class="unit u-2-16"><div class="u-module"><div class="module">2-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-3-16"><div class="u-module"><div class="module">3-16</div></div></div>
+				<div class="unit u-3-16"><div class="u-module"><div class="module">3-16</div></div></div>
+				<div class="unit u-3-16"><div class="u-module"><div class="module">3-16</div></div></div>
+				<div class="unit u-3-16"><div class="u-module"><div class="module">3-16</div></div></div>
+				<div class="unit u-4-16"><div class="u-module"><div class="module">4-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-4-16"><div class="u-module"><div class="module">4-16</div></div></div>
+				<div class="unit u-4-16"><div class="u-module"><div class="module">4-16</div></div></div>
+				<div class="unit u-4-16"><div class="u-module"><div class="module">4-16</div></div></div>
+				<div class="unit u-4-16"><div class="u-module"><div class="module">4-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-5-16"><div class="u-module"><div class="module">5-16</div></div></div>
+				<div class="unit u-5-16"><div class="u-module"><div class="module">5-16</div></div></div>
+				<div class="unit u-6-16"><div class="u-module"><div class="module">6-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-6-16"><div class="u-module"><div class="module">6-16</div></div></div>
+				<div class="unit u-6-16"><div class="u-module"><div class="module">6-16</div></div></div>
+				<div class="unit u-4-16"><div class="u-module"><div class="module">4-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-7-16"><div class="u-module"><div class="module">7-16</div></div></div>
+				<div class="unit u-7-16"><div class="u-module"><div class="module">7-16</div></div></div>
+				<div class="unit u-2-16"><div class="u-module"><div class="module">2-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-9-16"><div class="u-module"><div class="module">9-16</div></div></div>
+				<div class="unit u-7-16"><div class="u-module"><div class="module">7-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-10-16"><div class="u-module"><div class="module">10-16</div></div></div>
+				<div class="unit u-6-16"><div class="u-module"><div class="module">6-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-11-16"><div class="u-module"><div class="module">11-16</div></div></div>
+				<div class="unit u-5-16"><div class="u-module"><div class="module">5-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-12-16"><div class="u-module"><div class="module">12-16</div></div></div>
+				<div class="unit u-4-16"><div class="u-module"><div class="module">4-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-13-16"><div class="u-module"><div class="module">13-16</div></div></div>
+				<div class="unit u-3-16"><div class="u-module"><div class="module">3-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-14-16"><div class="u-module"><div class="module">14-16</div></div></div>
+				<div class="unit u-2-16"><div class="u-module"><div class="module">2-16</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-15-16"><div class="u-module"><div class="module">15-16</div></div></div>
+				<div class="unit u-1-16"><div class="u-module"><div class="module">1-16</div></div></div>
+			</div>
+
+			<div class="u-row">
+				<h2>twelths</h2>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-2-12"><div class="u-module"><div class="module">2-12</div></div></div>
+				<div class="unit u-2-12"><div class="u-module"><div class="module">2-12</div></div></div>
+				<div class="unit u-2-12"><div class="u-module"><div class="module">2-12</div></div></div>
+				<div class="unit u-2-12"><div class="u-module"><div class="module">2-12</div></div></div>
+				<div class="unit u-2-12"><div class="u-module"><div class="module">2-12</div></div></div>
+				<div class="unit u-2-12"><div class="u-module"><div class="module">2-12</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-3-12"><div class="u-module"><div class="module">3-12</div></div></div>
+				<div class="unit u-3-12"><div class="u-module"><div class="module">3-12</div></div></div>
+				<div class="unit u-3-12"><div class="u-module"><div class="module">3-12</div></div></div>
+				<div class="unit u-3-12"><div class="u-module"><div class="module">3-12</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-4-12"><div class="u-module"><div class="module">4-12</div></div></div>
+				<div class="unit u-4-12"><div class="u-module"><div class="module">4-12</div></div></div>
+				<div class="unit u-4-12"><div class="u-module"><div class="module">4-12</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-5-12"><div class="u-module"><div class="module">5-12</div></div></div>
+				<div class="unit u-5-12"><div class="u-module"><div class="module">5-12</div></div></div>
+				<div class="unit u-2-12"><div class="u-module"><div class="module">2-12</div></div></div>
+			</div><div class="u-row">
+				<div class="unit u-6-12"><div class="u-module"><div class="module">6-12</div></div></div>
+				<div class="unit u-6-12"><div class="u-module"><div class="module">6-12</div></div></div>
+			</div><div class="u-row">
+				<div class="unit u-7-12"><div class="u-module"><div class="module">7-12</div></div></div>
+				<div class="unit u-5-12"><div class="u-module"><div class="module">5-12</div></div></div>
+			</div><div class="u-row">
+				<div class="unit u-8-12"><div class="u-module"><div class="module">8-12</div></div></div>
+				<div class="unit u-4-12"><div class="u-module"><div class="module">4-12</div></div></div>
+			</div><div class="u-row">
+				<div class="unit u-9-12"><div class="u-module"><div class="module">9-12</div></div></div>
+				<div class="unit u-3-12"><div class="u-module"><div class="module">3-12</div></div></div>
+			</div><div class="u-row">
+				<div class="unit u-10-12"><div class="u-module"><div class="module">10-12</div></div></div>
+				<div class="unit u-2-12"><div class="u-module"><div class="module">2-12</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-11-12"><div class="u-module"><div class="module">11-12</div></div></div>
+				<div class="unit u-1-12"><div class="u-module"><div class="module">1-12</div></div></div>
+			</div>
+
+			<div class="u-row">
+				<h2>sixths</h2>
+				<div class="unit u-1-6"><div class="u-module"><div class="module">1-6</div></div></div>
+				<div class="unit u-1-6"><div class="u-module"><div class="module">1-6</div></div></div>
+				<div class="unit u-1-6"><div class="u-module"><div class="module">1-6</div></div></div>
+				<div class="unit u-1-6"><div class="u-module"><div class="module">1-6</div></div></div>
+				<div class="unit u-1-6"><div class="u-module"><div class="module">1-6</div></div></div>
+				<div class="unit u-1-6"><div class="u-module"><div class="module">1-6</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-1-6"><div class="u-module"><div class="module">1-6</div></div></div>
+				<div class="unit u-2-6"><div class="u-module"><div class="module">2-6</div></div></div>
+				<div class="unit u-3-6"><div class="u-module"><div class="module">3-6</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-2-6"><div class="u-module"><div class="module">2-6</div></div></div>
+				<div class="unit u-2-6"><div class="u-module"><div class="module">2-6</div></div></div>
+				<div class="unit u-2-6"><div class="u-module"><div class="module">2-6</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-2-6"><div class="u-module"><div class="module">2-6</div></div></div>
+				<div class="unit u-4-6"><div class="u-module"><div class="module">4-6</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-1-6"><div class="u-module"><div class="module">1-6</div></div></div>
+				<div class="unit u-5-6"><div class="u-module"><div class="module">5-6</div></div></div>
+			</div>
+
+			<div class="u-row">
+				<h2>fifths</h2>
+				<div class="unit u-1-5"><div class="u-module"><div class="module">1-5</div></div></div>
+				<div class="unit u-1-5"><div class="u-module"><div class="module">1-5</div></div></div>
+				<div class="unit u-1-5"><div class="u-module"><div class="module">1-5</div></div></div>
+				<div class="unit u-1-5"><div class="u-module"><div class="module">1-5</div></div></div>
+				<div class="unit u-1-5"><div class="u-module"><div class="module">1-5</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-2-5"><div class="u-module"><div class="module">2-5</div></div></div>
+				<div class="unit u-3-5"><div class="u-module"><div class="module">3-5</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-1-5"><div class="u-module"><div class="module">1-5</div></div></div>
+				<div class="unit u-4-5"><div class="u-module"><div class="module">4-5</div></div></div>
+			</div>
+
+			<div class="u-row">
+				<h2>fourths</h2>
+				<div class="unit u-1-4"><div class="u-module"><div class="module">1-4</div></div></div>
+				<div class="unit u-1-4"><div class="u-module"><div class="module">1-4</div></div></div>
+				<div class="unit u-1-4"><div class="u-module"><div class="module">1-4</div></div></div>
+				<div class="unit u-1-4"><div class="u-module"><div class="module">1-4</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-2-4"><div class="u-module"><div class="module">1-4</div></div></div>
+				<div class="unit u-2-4"><div class="u-module"><div class="module">1-4</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-3-4"><div class="u-module"><div class="module">3-4</div></div></div>
+				<div class="unit u-1-4"><div class="u-module"><div class="module">1-4</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-1-4"><div class="u-module"><div class="module">1-4</div></div></div>
+				<div class="unit u-3-4"><div class="u-module"><div class="module">3-4</div></div></div>
+			</div>
+
+			<div class="u-row">
+				<h2>fourths</h2>
+				<div class="unit u-1-3"><div class="u-module"><div class="module">1-3</div></div></div>
+				<div class="unit u-1-3"><div class="u-module"><div class="module">1-3</div></div></div>
+				<div class="unit u-1-3"><div class="u-module"><div class="module">1-3</div></div></div>
+			</div>
+			<div class="u-row">
+				<div class="unit u-1-3"><div class="u-module"><div class="module">1-3</div></div></div>
+				<div class="unit u-2-3"><div class="u-module"><div class="module">2-3</div></div></div>
+			</div>
+			<div class="u-row">
+				<h2>halves</h2>
+				<div class="unit u-1-2"><div class="u-module"><div class="module">1-2</div></div></div>
+				<div class="unit u-1-2"><div class="u-module"><div class="module">1-2</div></div></div>
+			</div>
+			<div class="u-row">
+				<h2>full width</h2>
+				<div class="unit u-1-1"><div class="u-module"><div class="module">1-1</div></div></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
