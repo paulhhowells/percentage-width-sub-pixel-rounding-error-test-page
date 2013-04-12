@@ -1,4 +1,4 @@
-percentage-width-sub-pixel-rounding-error-test-page
+percentage width sub-pixel rounding error test page
 ===================================================
 
 Use this HTML & CSS page to test percentage widths for sub-pixel rounding in different browsers / user agents.
