@@ -3,7 +3,7 @@ percentage-width-sub-pixel-rounding-error-test-page
 
 Use this HTML & CSS page to test percentage widths for sub-pixel rounding in different browsers / user agents.
 
-Testing in recent versions of Safari 5.1.8, Firefox 19 and Opera 12.15 confirms that they not only round down (which avoids grid system columns from popping out of place) but also tend to make intelligent decisions to even out the spacing.  Please note that (within these recent non-IE browsers) the CSS stretches the last-child in a set of columns to fill the remaining gap.
+Testing in recent versions of Safari 5.1.8, Firefox 19 and Opera 12.15 confirms that they not only round down (which avoids grid system columns from popping out of place) but also tend to make intelligent decisions to even out the spacing.  Please note that (within these recent non-IE browsers) the grid CSS stretches the last-child in a set of columns to fill the remaining gap.
 
 Testing in IE7 and IE6 has shown that as expected they usually round up sub-pixel fractions. I have iteratively adjusted the percentages to avoid the grid columns from popping out of place at browser widths above 960px, and created a subset of overrides that work at widths down to 500px.  With IE6 & IE7 I have not attempted to adjust the last-child in each row of columns, and thus the length of each row will vary at different widths.
 
