@@ -13,7 +13,8 @@ My motivation for these tests is the use of percentages within a responsive grid
 It may be pragmatic to fix the overall width of any design for IE6 & IE7, and only vary the design’s width in response to media query breakpoints (in recent browsers). Perhaps with a fixed width design for IE7 & IE7 it would be a good idea to set the narrowest width column to be an integer.
 
 ## To Do
-test IE8, IE9, IE10, Chrome, older versions of Firefox, iPhone, iPad, Android
+* add eighths
+* test IE8, IE9, IE10, Chrome, older versions of Firefox, iPhone, iPad, Android
 
 ## Explanation / Interpreting test results
 Open percentage-width-grid-test-page.html within the browser the CSS is to be tested against. Notice that the white horizontal rows are divided into units, each being set to a fraction (or percentage) of the full width of the row.
