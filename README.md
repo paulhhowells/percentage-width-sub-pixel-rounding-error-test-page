@@ -16,9 +16,11 @@ It may be pragmatic to fix the overall width of any design for IE6 & IE7, and on
 * Internet Explorer 6
 * Internet Explorer 7
 * Internet Explorer 8
+* Internet Explorer 9
 * Safari 5.1.8
 * Firefox 19
 * Opera 12.15
+* Chrome 24
 
 ## To Do
 * add eighths in IE7
